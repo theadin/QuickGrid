@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickGrid", "QuickGrid\QuickGrid.csproj", "{D06D8741-9041-4122-806E-3EB48E84F4AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickGrid", "QuickGrid\QuickGrid.csproj", "{D06D8741-9041-4122-806E-3EB48E84F4AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickGrid.Client", "QuickGrid.Client\QuickGrid.Client.csproj", "{1B190C76-89D6-46C1-8060-234570604295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickGrid.Client", "QuickGrid.Client\QuickGrid.Client.csproj", "{1B190C76-89D6-46C1-8060-234570604295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

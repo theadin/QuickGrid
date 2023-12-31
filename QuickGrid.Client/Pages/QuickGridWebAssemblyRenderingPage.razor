@@ -1,0 +1,51 @@
+﻿@page "/QuickGridWebAssemblyRenderingPage"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using QuickGrid.Client.Models
+
+@inject HttpClient Http
+@inject NavigationManager NavManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+<h3>QuickGrid WebAssembly</h3>
+
+
+<InputText @bind-Value="FilterText" />
+<div class="grid" tabindex="-1">
+    @* <QuickGrid Items="@products.AsQueryable()" Pagination="@pagination"> *@
+    <QuickGrid ItemsProvider="productsProvider" Pagination="@pagination">
+        <PropertyColumn Title="ID" Property="@(c => c.event_id)" />
+        <PropertyColumn Property="@(c => c.state)" />
+        <PropertyColumn Property="@(c => c.city)" />
+        <PropertyColumn Title="Company" Property="@(c => c.recalling_firm)" />
+        <PropertyColumn Property="@(c => c.status)" />
+    </QuickGrid>
+
+    <Paginator State="@pagination"></Paginator>
+</div>
+
+@code {
+    List<Result> products = new();
+    PaginationState pagination = new PaginationState { ItemsPerPage = 5 };
+    GridItemsProvider<Result>? productsProvider;
+    string FilterText { get; set; } = "";
+    protected override async Task OnInitializedAsync()
+    {
+        
+
+        //var result = await Http.GetFromJsonAsync<FoodRecallQueryResult>(url);
+        productsProvider = async req =>
+        {
+            var url = NavManager.GetUriWithQueryParameters("https://api.fda.gov/food/enforcement.json", 
+                new Dictionary<string, object?>
+                    {
+                        { "skip", req.StartIndex },
+                        { "limit", req.Count },
+                    });
+            var response = await Http.GetFromJsonAsync<FoodRecallQueryResult>(url);
+            return GridItemsProviderResult.From(items: response!.results, totalItemCount: response!.meta!.results!.total);
+        };
+        //products = result!.results.ToList();
+       
+    }
+
+}
