@@ -5,7 +5,7 @@
 @inject HttpClient Http
 @inject NavigationManager NavManager
 @attribute [StreamRendering]
-@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 <h3>QuickGrid WebAssembly</h3>
 
 
@@ -30,12 +30,13 @@
     string FilterText { get; set; } = "";
     protected override async Task OnInitializedAsync()
     {
-        
 
+        //Http.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
         //var result = await Http.GetFromJsonAsync<FoodRecallQueryResult>(url);
+        
         productsProvider = async req =>
         {
-            var url = NavManager.GetUriWithQueryParameters("https://api.fda.gov/food/enforcement.json", 
+            var url = NavManager.GetUriWithQueryParameters($"{NavManager.BaseUri}api/MockData",
                 new Dictionary<string, object?>
                     {
                         { "skip", req.StartIndex },

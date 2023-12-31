@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Hosting;
 using QuickGrid.Client.Pages;
 using QuickGrid.Components;
 
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddControllers();
 
 builder.Services.AddScoped<HttpClient>();
 
@@ -34,4 +37,5 @@ app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Counter).Assembly);
 
+app.MapControllers();
 app.Run();
