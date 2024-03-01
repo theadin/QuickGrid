@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuickGrid.Client\QuickGrid.Client.csproj" />
-    <PackageReference Include="CsvHelper" Version="30.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+    <PackageReference Include="Blazicons" Version="1.2.20" />
+    <PackageReference Include="Blazicons.FluentUI" Version="1.24.62" />
+    <PackageReference Include="CsvHelper" Version="31.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
